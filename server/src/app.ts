@@ -8,14 +8,14 @@ const __dirname = path.dirname(__filename);
 const app: Express = express();
 const PORT: string = process.env.PORT || "8080";
 
-app.use(express.static(path.join(__dirname, "../../client/dist")));
+app.use(express.static(path.join(__dirname, "../client/dist")));
 
 app.get("/api", (req, res) => {
   res.json({ message: "Hello from server!" });
 });
 
 app.get("*", (req: Request, res: Response, next: any) => {
-  res.sendFile(path.join(__dirname, "../../client/dist", "index.html"));
+  res.sendFile(path.join(__dirname, "../client/dist", "index.html"));
 });
 
 app.listen(PORT, () => {
