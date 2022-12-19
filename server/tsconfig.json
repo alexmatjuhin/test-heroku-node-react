@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "module": "es2022",
+        "noImplicitAny": true,
+        "removeComments": true,
+        "preserveConstEnums": true,
+        "sourceMap": false,
+        "declaration": true,
+        "moduleResolution": "node",
+        "outDir": "./dist",
+        "allowSyntheticDefaultImports": true
+    },
+    "include": [
+        "src"
+    ],
+    "exclude": [
+        "client"
+    ]
+}
