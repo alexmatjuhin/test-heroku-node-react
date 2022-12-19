@@ -39,7 +39,7 @@ const config = {
         new CopyWebpackPlugin(
             {
                 patterns: [
-                    { from: 'assets', to: path.resolve(__dirname, 'dist/assets'),  }
+                    { from: 'assets', to: path.resolve(__dirname, 'dist/assets'), }
                 ]
             }
         ),
@@ -48,7 +48,7 @@ const config = {
         })
     ],
     resolve: {
-        extensions: [".ts", ".tsx", ".js", ".css", ".scss"]
+        extensions: [".ts", ".tsx", ".js", ".css", ".scss", ".sass"]
     },
     module: {
         rules: [
@@ -57,19 +57,19 @@ const config = {
                 loader: "ts-loader"
             },
             {
-                test: /\.scss$/,
+                test: /\.s[ac]ss$/i,
                 use: [
-                    { loader: "style-loader" },
+                    "style-loader",
                     {
-                        loader: "css-modules-typescript-loader",
+                        loader: "css-loader",
                         options: {
-                            camelcase: true,
+                            url: false,
                             modules: true
-                        }
+                        },
                     },
-                    { loader: "css-loader", options: { modules: true } },
-                    { loader: "sass-loader" },
-                ]
+                    "resolve-url-loader",
+                    "sass-loader",
+                ],
             },
             {
                 test: /\.(png|jpg|svg|gif)$/,
