@@ -59,7 +59,8 @@ const config = {
             {
                 test: /\.s[ac]ss$/i,
                 use: [
-                    "style-loader",
+                    { loader:"style-loader" },
+                    { loader: "css-modules-typescript-loader"},
                     {
                         loader: "css-loader",
                         options: {
@@ -67,8 +68,8 @@ const config = {
                             modules: true
                         },
                     },
-                    "resolve-url-loader",
-                    "sass-loader",
+                    { loader:"resolve-url-loader" },
+                    { loader:"sass-loader" },
                 ],
             },
             {
