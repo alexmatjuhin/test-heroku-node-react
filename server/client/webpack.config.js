@@ -41,10 +41,7 @@ const config = {
                     { from: 'assets', to: path.resolve(__dirname, 'dist/assets'), }
                 ]
             }
-        ),
-        new Dotenv({
-            file: "./.env"
-        })
+        )
     ],
     resolve: {
         extensions: [".ts", ".tsx", ".js", ".css", ".scss", ".sass"]

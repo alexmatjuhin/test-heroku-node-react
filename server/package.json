@@ -2,12 +2,14 @@
   "name": "test-heroku-node-react-server",
   "version": "1.0.0",
   "description": "node.js server with express and typescript",
-  "main": "dist/app.js",
+  "main": "app.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node dist/app.js",
-    "build": "tsc && cd client && npm install && npm run build",
-    "deploy": "git push heroku master"
+    "deploy": "git push heroku master",
+    "build": "npm run build:server && npm run build:client",
+    "build:server": "copy \".env\" \"./dist/.env\" && npm install && tsc",
+    "build:client": "cd client && npm install && npm run build",
+    "start": "node dist/app.js"
   },
   "repository": {
     "type": "git",
@@ -25,7 +27,6 @@
     "url": "https://github.com/alexmatjuhin/test-heroku-node-react/issues"
   },
   "homepage": "https://github.com/alexmatjuhin/test-heroku-node-react#readme",
-  "type": "module",
   "devDependencies": {
     "@types/node": "^18.11.17",
     "typescript": "^4.9.4"

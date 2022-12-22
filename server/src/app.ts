@@ -1,12 +1,6 @@
 import express, { Express, Request, Response } from "express";
 import path from "path";
-import url from "url";
-import dotenv from "dotenv";
-
-dotenv.config();
-
-const __filename = url.fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+import variables from "./services/variables"
 
 const app: Express = express();
 const PORT: string = process.env.PORT || "8080";
@@ -14,7 +8,7 @@ const PORT: string = process.env.PORT || "8080";
 app.use(express.static(path.join(__dirname, "../client/dist")));
 
 app.get("/api", (req, res) => {
-  res.json({ message: "Hello from server!" });
+  res.json({ message: `Hello from server running on ${variables.environment}!` });
 });
 
 app.get("*", (req: Request, res: Response, next: any) => {
