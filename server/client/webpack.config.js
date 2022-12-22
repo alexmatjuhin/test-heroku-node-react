@@ -3,7 +3,6 @@ import HTMLWebpackPlugin from "html-webpack-plugin";
 import { CleanWebpackPlugin } from "clean-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import CopyWebpackPlugin from "copy-webpack-plugin";
-import Dotenv from "dotenv-webpack";
 import url from "url";
 
 const __filename = url.fileURLToPath(import.meta.url);
