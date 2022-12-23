@@ -8,7 +8,7 @@
     "deploy": "git push heroku master",
 
     "start": "node dist/app.js",
-    "build": "rimraf ./dist && npm run build:server && npm run build:client",
+    "build": "npm run build:server && npm run build:client",
     "build:server": "npm install && tsc",
     "build:client": "cd client && npm install && npm run build",
 
