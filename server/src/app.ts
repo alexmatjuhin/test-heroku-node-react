@@ -1,6 +1,6 @@
 import express, { Express, Request, Response } from "express";
 import path from "path";
-import variables from "./services/variables"
+import variables from "./services/constants"
 
 const app: Express = express();
 const port: string = variables.port;
