@@ -1,20 +1,24 @@
 import express, { Express, Request, Response } from "express";
 import path from "path";
-import variables from "./services/constants"
+import { getConstantsAsync } from "./services/constants"
 
-const app: Express = express();
-const port: string = variables.port;
+getConstantsAsync()
+  .then(constants => {
+    const app: Express = express();
+    app.use(express.static(path.join(__dirname, "../client/dist")));
 
-app.use(express.static(path.join(__dirname, "../client/dist")));
+    app.get("/api", async (req, res) => {
+      res.json({ message: `Hello from server running on ${constants.environment}!` });
+    });
 
-app.get("/api", (req, res) => {
-  res.json({ message: `Hello from server running on ${variables.environment}!` });
-});
+    app.get("*", (req: Request, res: Response, next: any) => {
+      res.sendFile(path.join(__dirname, "../client/dist", "index.html"));
+    });
 
-app.get("*", (req: Request, res: Response, next: any) => {
-  res.sendFile(path.join(__dirname, "../client/dist", "index.html"));
-});
-
-app.listen(port, () => {
-  console.log(`[server]: Server is running at http://localhost:${port}`);
-});
+    app.listen(constants.port, async () => {
+      console.log(`[server]: Server is running at http://localhost:${constants.port}`);
+    });
+  })
+  .catch(err => {
+    console.error(err);
+  });

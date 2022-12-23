@@ -2,12 +2,14 @@ import dotenv from "dotenv";
 import path from "path";
 import * as fileService from "../services/fileService";
 
-const envPath = path.join(__dirname, ".env");
+const getDotEnvAsync = async (): Promise<dotenv.DotenvConfigOutput> => {
+    const rootPath = await fileService.getAppPath();
+    const envPath = path.join(rootPath, ".env");
 
-const dotenvOptions: dotenv.DotenvConfigOptions = {
-    path: envPath,
-    encoding: "latin1"
+    const dotenvOptions: dotenv.DotenvConfigOptions = {
+        path: envPath,
+        encoding: "latin1"
+    }
+    return await fileService.checkFileCanReadAsync(envPath) ? dotenv.config(dotenvOptions) : {} as dotenv.DotenvConfigOutput;
 }
-
-const dotenvConfig: dotenv.DotenvConfigOutput = fileService.checkFileCanRead(envPath) ? dotenv.config(dotenvOptions) : {} as dotenv.DotenvConfigOutput;
-export default dotenvConfig;
+export default getDotEnvAsync;
