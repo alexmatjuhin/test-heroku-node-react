@@ -1,25 +1,23 @@
 import * as React from "react";
+import { Navigate, Route, Routes, useLocation } from "react-router-dom";
+
 import styles from "./App.scss";
 import Header from "../Header/Header"
 import Footer from "../Footer/Footer";
-
-import background from "../../assets/images/background.png";
+import Home from "../../pages/Home/Home";
+import About from "../../pages/About/About";
 
 const App = () => {
-    const biStyle = {
-        backgroundImage: `url(${background})`,
-        backgroundRepeat  : 'no-repeat',
-        backgroundPosition: 'center'
-    };
-
-    console.log(biStyle);
+    const { pathname } = useLocation();
 
     return (
-        <div className={styles.app} style={biStyle} >
+        <div className={styles.app}>
             <Header />
-            <div className={styles.content} >
-                <h2>Main Content</h2>
-            </div>
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/home" element={<Home />} />
+                <Route path="/about" element={<About />} />
+            </Routes>
             <Footer />
         </div>
     )

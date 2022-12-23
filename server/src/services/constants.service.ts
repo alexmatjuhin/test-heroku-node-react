@@ -1,4 +1,4 @@
-import getDotEnvAsync from "./dotenvConfig";
+import getDotEnvAsync from "./dotenv.service";
 import { IConstants } from "../core/interfaces";
 
 let constants: IConstants;

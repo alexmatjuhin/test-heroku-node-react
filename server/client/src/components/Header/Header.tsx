@@ -1,11 +1,19 @@
 import * as React from 'react';
+import { Link } from "react-router-dom";
+
 import styles from "./Header.scss";
 
 const Header = () => {
-
     return (
         <div className={styles.header}>
-            <h3>Header</h3>
+            <ul style={{ listStyleType: "", padding: 0 }}>
+                <li>
+                    <Link to="/">[Home]</Link>
+                </li>
+                <li>
+                    <Link to="/about">[About]</Link>
+                </li>
+            </ul>
         </div>
     )
 }

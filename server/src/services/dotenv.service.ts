@@ -1,6 +1,6 @@
 import dotenv from "dotenv";
 import path from "path";
-import * as fileService from "../services/fileService";
+import * as fileService from "./file.service";
 
 const getDotEnvAsync = async (): Promise<dotenv.DotenvConfigOutput> => {
     const rootPath = await fileService.getAppPath();
