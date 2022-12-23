@@ -6,13 +6,16 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "deploy": "git push heroku master",
-    "build": "npm run build:server && npm run build:client",
+
+    "start": "node dist/app.js",
+    "build": "rimraf ./dist && npm run build:server && npm run build:client",
     "build:server": "npm install && tsc",
     "build:client": "cd client && npm install && npm run build",
+
+    "start:dev": "node dist/app.js",
     "build:dev": "npm run build:dev:server && npm run build:dev:client",
     "build:dev:server": "copy \".env\" \"./dist/.env\" && npm install && tsc",
-    "build:dev:client": "cd client && npm install && npm run build",
-    "start": "node dist/app.js"
+    "build:dev:client": "cd client && npm install && npm run build"
   },
   "repository": {
     "type": "git",
